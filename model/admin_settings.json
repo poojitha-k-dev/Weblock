@@ -1,0 +1,14 @@
+{
+    "admin_users": [
+        {
+            "username": "cyber",
+            "password": "dash123"
+        }
+    ],
+    "bypass_access": [
+        {
+            "username": "admin",
+            "password": "bypass123"
+        }
+    ]
+}

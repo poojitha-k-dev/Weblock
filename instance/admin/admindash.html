@@ -6,9 +6,10 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="adminstyle.css">  <!-- Linking CSS -->
+    <link rel="stylesheet" href="adminstyle.css">  <!-- Linking External CSS -->
 </head>
 <body>
+    <!-- Sidebar Navigation -->
     <div class="sidebar">
         <div class="logo">
             <img src="weblock.png" alt="Logo">
@@ -24,6 +25,7 @@
         </ul>
     </div>
 
+    <!-- Main Content -->
     <div class="main-content">
         <div class="header">
             <span class="toggle-btn"><i class="fas fa-bars"></i></span>
@@ -36,15 +38,82 @@
             <p>Select a section from the sidebar to view logs and captured data.</p>
         </div>
 
-        <!-- Captured Images Preview Section -->
-        <div id="image-preview-section" style="display: none;">
-            <h2>Captured Images</h2>
-            <div class="image-container">
-                <div class="image-list">
-                    <ul id="image-list"></ul>
+        <!-- Intruder Logs Section -->
+        <div id="intruder-logs-section" style="display: none;">
+            <h2>Intruder Logs</h2>
+            <input type="file" id="csvFileInput" accept=".csv" class="btn">
+            <table id="logTable">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>IP</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Country</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>ISP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- CSV content will be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Screenshot Logs Section -->
+        <div id="screenshot-logs-section" style="display: none;">
+            <h2>Screenshot Logs</h2>
+
+            <!-- Screenshot Log Table -->
+            <table id="screenshot-table">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Filename</th>
+                        <th>Preview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Screenshot log data will be dynamically rendered here -->
+                </tbody>
+            </table>
+
+            <!-- Screenshot Grid Layout -->
+            <div class="screenshot-grid">
+                <h3>Screenshot Preview</h3>
+                <div id="screenshot-grid-container" class="grid-container">
+                    <!-- Thumbnails dynamically added here -->
                 </div>
-                <div class="image-preview">
-                    <img id="selected-image" src="" alt="Select an image" />
+            </div>
+
+            <!-- Full-Size Image Preview -->
+            <div id="full-image-preview" class="full-image-preview" style="display: none;">
+                <span class="close-btn" onclick="closePreview()">×</span>
+                <img id="full-image" src="" alt="Full-size preview" />
+            </div>
+        </div>
+
+        <!-- Captured Images Section -->
+        <div id="image-preview-section" style="display: none;">
+            <div class="toggle-container">
+                <button class="toggle-btn active" data-type="Screenshots">Screenshots</button>
+                <button class="toggle-btn" data-type="Captured Images">Captured Images</button>
+                <button class="toggle-btn" data-type="Keylogs">Keylogs</button>
+            </div>
+            
+            <div class="image-container">
+                <div class="file-list">
+                    <div class="file-item">
+                        <i class="fas fa-image"></i>
+                        <span class="file-name"></span>
+                        <span class="file-size"></span>
+                        <span class="file-time">less than a minute ago</span>
+                    </div>
+                </div>
+                <div class="preview-area">
+                    <div class="preview-placeholder">Select an image to preview</div>
+                    <img id="selected-image" src="" alt="Preview" style="display: none;">
                 </div>
             </div>
         </div>

@@ -1,30 +1,64 @@
-# Byte-compiled / optimized / DLL files
+# ==============================
+# Python cache
+# ==============================
 __pycache__/
 *.py[cod]
 *$py.class
 
+# ==============================
 # Virtual environments
+# ==============================
 venv/
 env/
 ENV/
+.venv/
+
+# ==============================
+# Environment variables
+# ==============================
 .env
+.env.*
+!.env.example
 
-# Captured forensic evidence (keep directory, ignore media files)
-Capture/screenshots/*.png
-Capture/intruder/*.jpg
-Capture/intruder/*.png
+# ==============================
+# Generated capture files
+# ==============================
+capture/intruders/
+capture/screenshots/
 
-# Local logs (keep logs folder, ignore generated log files)
+# ==============================
+# Generated forensic evidence
+# ==============================
+Capture/screenshots/
+Capture/intruder/
+
+# ==============================
+# Generated keylogger data
+# ==============================
+keylogger_logs/__pycache__/
+keylogger_logs/*.txt
+keylogger_logs/screenshots/
+
+# ==============================
+# Generated logs
+# ==============================
 logs/*.csv
 logs/*.json
 logs/*.log
+intruder_log.csv
+login_log.csv
+*.log
 
-# Reports and generated models
+# ==============================
+# Reports / generated models
+# ==============================
 reports/*.pdf
 model/reports/*.pdf
 models/*.pkl
 
-# OS and IDE files
+# ==============================
+# OS / IDE
+# ==============================
 .DS_Store
 Thumbs.db
 .vscode/

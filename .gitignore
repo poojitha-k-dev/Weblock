@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+
+# Captured forensic evidence (keep directory, ignore media files)
+Capture/screenshots/*.png
+Capture/intruder/*.jpg
+Capture/intruder/*.png
+
+# Local logs (keep logs folder, ignore generated log files)
+logs/*.csv
+logs/*.json
+logs/*.log
+
+# Reports and generated models
+reports/*.pdf
+model/reports/*.pdf
+models/*.pkl
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

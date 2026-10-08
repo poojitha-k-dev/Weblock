@@ -1,0 +1,6 @@
+Flask==2.0.3
+opencv-python==4.5.5.64
+requests==2.27.1
+pynput==1.7.5
+mss==6.1.0
+tabulate==0.8.9

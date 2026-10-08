@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="adminstyle.css">  <!-- Linking CSS -->
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="weblock.png" alt="Logo">
+            <span>Cyber Admin</span>
+        </div>
+        <ul>
+            <li onclick="loadContent('home')"><i class="fas fa-home"></i> <span>Home</span></li>
+            <li onclick="loadContent('employee-logs')"><i class="fas fa-users"></i> <span>Employee Logs</span></li>
+            <li onclick="loadContent('intruder-logs')"><i class="fas fa-user-secret"></i> <span>Intruder Logs</span></li>
+            <li onclick="loadContent('keystroke-logs')"><i class="fas fa-key"></i> <span>Keystroke Logs</span></li>
+            <li onclick="loadContent('screenshot-logs')"><i class="fas fa-camera"></i> <span>Screenshot Logs</span></li>
+            <li onclick="loadContent('captured-images')"><i class="fas fa-database"></i> <span>Captured Images</span></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <span class="toggle-btn"><i class="fas fa-bars"></i></span>
+            <h2>WEBLOCK</h2>
+            <div class="vpn-box">VPN IP: 192.168.1.1</div>
+        </div>
+
+        <div id="content-area">
+            <h2>Welcome to WebLock Dashboard</h2>
+            <p>Select a section from the sidebar to view logs and captured data.</p>
+        </div>
+
+        <!-- Captured Images Preview Section -->
+        <div id="image-preview-section" style="display: none;">
+            <h2>Captured Images</h2>
+            <div class="image-container">
+                <div class="image-list">
+                    <ul id="image-list"></ul>
+                </div>
+                <div class="image-preview">
+                    <img id="selected-image" src="" alt="Select an image" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="adminscript.js"></script>  <!-- Linking JavaScript -->
+</body>
+</html>

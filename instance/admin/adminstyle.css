@@ -1,0 +1,244 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #1e1e2f;
+    color: white;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #13131f;
+    height: 100vh;
+    padding: 20px;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.sidebar:hover {
+    background: #1a1a2e;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .logo img {
+    width: 40px;
+}
+
+.sidebar .logo span {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.sidebar.collapsed .logo span {
+    display: none;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Sidebar Item Hover Effect */
+.sidebar ul li {
+padding: 12px;
+display: flex;
+align-items: center;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
+white-space: nowrap;
+border-radius: 8px; /* Rounded corners */
+}
+
+.sidebar ul li:hover {
+background: linear-gradient(45deg, #ff416c, #ff4b2b);
+color: white;
+transform: scale(1.05); /* Slight scaling effect */
+box-shadow: 0px 4px 10px rgba(255, 75, 43, 0.3);
+}
+
+/* Change icon color on hover */
+.sidebar ul li:hover i {
+color: #fff;
+}
+
+
+.sidebar ul li span {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.sidebar.collapsed ul li span {
+    display: none;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #29293d;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-btn {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.vpn-box {
+background: linear-gradient(135deg, #ff8c00, #ff2e63);
+padding: 15px 25px;
+border-radius: 8px;
+display: inline-block;
+box-shadow: 0px 4px 10px rgba(255, 46, 99, 0.5);
+font-weight: bold;
+font-size: 16px;
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+color: white;
+border: 1px solid rgba(255, 255, 255, 0.2);
+transition: transform 0.3s ease-in-out;
+}
+
+.vpn-box:hover {
+transform: scale(1.05);
+box-shadow: 0px 6px 15px rgba(255, 46, 99, 0.7);
+}
+
+
+.employee-table {
+    background: #29293d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #444;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #1e1e2f;
+}
+
+td {
+    background: #13131f;
+}
+
+.status.online {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.status.offline {
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* Sidebar Icons Update */
+.sidebar ul li:nth-child(5) i { /* Intruder Tracking */
+    color: #ffcc00;
+}
+
+.sidebar ul li:nth-child(6) i { /* Keystroke Logs */
+    color: #ff6666;
+}
+
+.sidebar ul li:nth-child(7) i { /* Screen Captures */
+    color: #66ccff;
+}
+
+.sidebar ul li:nth-child(8) i { /* Data Capture */
+    color: #66ff99;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+    }
+    .sidebar .logo span {
+        display: none;
+    }
+    .sidebar ul li span {
+        display: none;
+    }
+}
+.image-container {
+    display: flex;
+    gap: 20px;
+}
+
+.image-list {
+    width: 30%;
+    background: #2e2e2e;
+    padding: 10px;
+    overflow-y: auto;
+    height: 300px;
+}
+
+.image-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.image-list ul li {
+    padding: 8px;
+    border-bottom: 1px solid #444;
+}
+
+.image-list ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.image-list ul li a:hover {
+    text-decoration: underline;
+}
+
+.image-preview {
+    width: 70%;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #fff;
+}

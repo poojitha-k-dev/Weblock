@@ -1,0 +1,65 @@
+
+[2025-02-25 12:44:28] [IP: UNKNOWN_IP]
+
+ [DELETE] key
+log.t
+
+[2025-02-25 12:45:10] [IP: UNKNOWN_IP]
+ [ALT]  [ALT]  [TAB]  [SHIFT] H
+ello 
+this 
+is sh
+itesh
+
+[2025-02-25 12:45:27] [IP: UNKNOWN_IP]
+  [CMD]  [LEFT]  [SHIFT] H
+ello 
+this 
+is  [SHIFT] G
+OOGLE
+
+[2025-02-25 12:46:04] [IP: UNKNOWN_IP]
+  [CTRL] \x1a [CMD] c
+md
+ip
+confi
+
+[2025-02-25 12:46:28] [IP: UNKNOWN_IP]
+g
+ [CTRL] \x03 [CTRL] 
+
+[2025-02-25 12:47:08] [IP: UNKNOWN_IP]
+ [CTRL]  [CTRL]  [CTRL]  [CTRL]  [CTRL] 
+\x01 [CTRL] \x03 [CTRL] \x01
+
+[2025-02-25 12:47:20] [IP: UNKNOWN_IP]
+\x16 [CTRL]  [CTRL]  [CTRL]  [CTRL] 
+ [CTRL]  [CTRL]  [CTRL]  [CTRL]  [CTRL] 
+ [CTRL]  [CTRL]  [CTRL]  [CTRL]  [CTRL] 
+ [CTRL]  [CTRL]  [CTRL]  [CTRL]  [CTRL] 
+ [CTRL]  [CTRL]  [CTRL]  [CTRL]  [CTRL] 
+ [CTRL]  [CTRL]  [CTRL]  [CTRL]  [CTRL] 
+ [CTRL]  [CTRL]  [CTRL]  [CTRL]  [CTRL] 
+
+[2025-02-25 12:49:02] [IP: UNKNOWN_IP]
+ [ALT]   [TAB]  g o o o g l e  [SPACE] 
+
+[2025-03-04 11:04:05] [IP: UNKNOWN_IP]
+ [ALT]   [TAB]   [ALT]   [TAB]   [ALT]   [TAB]   [CTRL]    [ALT]   [TAB] 
+l o n g i t u d e  [SPACE] 
+l a t  [DOWN]   [CTRL]   m a p s
+ [ENTER]
+
+
+[2025-03-04 11:04:18] [IP: UNKNOWN_IP]
+ [CTRL]   [CTRL]   [CTRL]    [ENTER]
+
+
+[2025-03-04 11:08:57] [IP: UNKNOWN_IP]
+ [ALT]   [TAB]   [ALT]   [TAB]   [ALT]   [TAB]   [CTRL]   [CTRL]   [CTRL]   [CTRL] 
+ [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL] 
+ [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL]   [CTRL] 
+
+[2025-03-05 09:51:20] [IP: UNKNOWN_IP]
+p i p  [SPACE]  i n s t a l
+l  [SPACE]  t h i s  [SPACE]  i s  [SPACE] 

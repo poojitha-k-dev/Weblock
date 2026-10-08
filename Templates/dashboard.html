@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Manager Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #202124;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styling */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #2a2b2f;
+            border-bottom: 1px solid #3a3b3e;
+        }
+
+        /* HITKSH Logo Styling */
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff4081;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .card {
+            background-color: #2a2b2f;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            color: #ff4081;
+        }
+
+        .node-status, .traffic, .databases, .cpu-memory, .indexing, .storage {
+            grid-column: span 1;
+        }
+
+        .node-status {
+            grid-column: span 2;
+            height: 150px;
+        }
+
+        .traffic {
+            grid-column: span 2;
+            height: 250px;
+        }
+
+        .cpu-memory, .databases, .indexing, .storage {
+            height: 200px;
+        }
+
+        .indexing, .storage {
+            grid-column: span 1;
+        }
+
+        table {
+            width: 100%;
+            color: #ffffff;
+            background-color: #28292c;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #3a3b3e;
+        }
+
+        canvas {
+            background-color: #1f1f1f;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Specific chart sizes */
+        #trafficChart {
+            height: 180px !important;
+        }
+
+        #cpuMemoryChart {
+            height: 130px !important;
+        }
+
+        #storageChart {
+            height: 150px !important;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            color: #ffffff;
+            background-color: #ff4081;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff6385;
+        }
+
+        /* Fix for layout alignment */
+        .traffic {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .databases, .indexing, .storage {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Fix to prevent scroll */
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .dashboard {
+            max-height: 100%;
+            overflow-y: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HITKSH Logo in the top-left corner -->
+    <div class="header">
+        <div class="logo">DASHBOARD</div>
+    </div>
+
+    <div class="dashboard">
+        <!-- Node Status -->
+        <div class="card node-status">
+            <h3>Node A Status</h3>
+            <p><strong>URL:</strong> https://example.node.trap.net</p>
+            <p><strong>Up for:</strong> 38 minutes</p>
+            <p><strong>Status:</strong> Secured</p>
+            <p><strong>Cluster:</strong> 3 Nodes</p>
+            <a href="#" class="btn">Manage Certificates</a>
+        </div>
+
+        <!-- Traffic Section -->
+        <div class="card traffic">
+            <div>
+                <h3>Traffic</h3>
+                <canvas id="trafficChart"></canvas>
+            </div>
+            <table>
+                <tr>
+                    <th>Database</th>
+                    <th>Requests/s</th>
+                    <th>Writes/s</th>
+                    <th>Data Written/s</th>
+                </tr>
+                <tr>
+                    <td>DB1</td>
+                    <td>0</td>
+                    <td>93,285</td>
+                    <td>35.72 MB</td>
+                </tr>
+                <tr>
+                    <td>DB2</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0 Bytes</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Databases Section -->
+        <div class="card databases">
+            <h3>Databases</h3>
+            <table>
+                <tr>
+                    <th>Database</th>
+                    <th>Docs #</th>
+                    <th>Index Errors</th>
+                </tr>
+                <tr>
+                    <td>DB1</td>
+                    <td>779,177</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>DB2</td>
+                    <td>3,406,594</td>
+                    <td>1</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- CPU and Memory Section -->
+        <div class="card cpu-memory">
+            <h3>CPU & Memory</h3>
+            <canvas id="cpuMemoryChart"></canvas>
+        </div>
+
+        <!-- Indexing Section -->
+        <div class="card indexing">
+            <h3>Indexing</h3>
+            <table>
+                <tr>
+                    <th>Database</th>
+                    <th>Indexed/sec</th>
+                    <th>Mapped/sec</th>
+                </tr>
+                <tr>
+                    <td>DB1</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>DB2</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Storage Section -->
+        <div class="card storage">
+            <h3>Storage</h3>
+            <canvas id="storageChart"></canvas>
+            <table>
+                <tr>
+                    <th>Database</th>
+                    <th>Size</th>
+                </tr>
+                <tr>
+                    <td>DB1</td>
+                    <td>772.33 MB</td>
+                </tr>
+                <tr>
+                    <td>DB2</td>
+                    <td>4.03 GB</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Generate random traffic data for real-time updates
+        function getRandomTrafficData() {
+            return Math.floor(Math.random() * 100);
+        }
+
+        function getRandomMemoryData() {
+            return Math.floor(Math.random() * 10) + 6; // 6-16 GB
+        }
+
+        function getRandomCpuData() {
+            return Math.floor(Math.random() * 100);
+        }
+
+        // Traffic Chart with moving updates
+        const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+        const trafficChart = new Chart(trafficCtx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '00:05', '00:10', '00:15', '00:20', '00:25', '00:30'],
+                datasets: [{
+                    label: 'Requests/s',
+                    data: Array(7).fill().map(() => getRandomTrafficData()),
+                    borderColor: '#42a5f5',
+                    backgroundColor: 'rgba(66,165,245,0.2)',
+                    pointBackgroundColor: '#42a5f5',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Writes/s',
+                    data: Array(7).fill().map(() => getRandomTrafficData()),
+                    borderColor: '#ff4081',
+                    backgroundColor: 'rgba(255,64,129,0.2)',
+                    pointBackgroundColor: '#ff4081',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        setInterval(() => {
+            trafficChart.data.datasets.forEach(dataset => {
+                dataset.data.shift(); // Remove the first data point
+                dataset.data.push(getRandomTrafficData()); // Add a new random data point
+            });
+            trafficChart.update();
+        }, 2000); // Update every 2 seconds for real-time effect
+
+        // CPU and Memory Chart with moving updates
+        const cpuMemoryCtx = document.getElementById('cpuMemoryChart').getContext('2d');
+        const cpuMemoryChart = new Chart(cpuMemoryCtx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '00:05', '00:10', '00:15', '00:20', '00:25', '00:30'],
+                datasets: [{
+                    label: 'CPU Usage (%)',
+                    data: Array(7).fill().map(() => getRandomCpuData()),
+                    borderColor: '#42a5f5',
+                    backgroundColor: 'rgba(66,165,245,0.2)',
+                    pointBackgroundColor: '#42a5f5',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Memory Usage (GB)',
+                    data: Array(7).fill().map(() => getRandomMemoryData()),
+                    borderColor: '#ffca28',
+                    backgroundColor: 'rgba(255,202,40,0.2)',
+                    pointBackgroundColor: '#ffca28',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        setInterval(() => {
+            cpuMemoryChart.data.datasets.forEach(dataset => {
+                dataset.data.shift();
+                if (dataset.label === 'CPU Usage (%)') {
+                    dataset.data.push(getRandomCpuData());
+                } else {
+                    dataset.data.push(getRandomMemoryData());
+                }
+            });
+            cpuMemoryChart.update();
+        }, 2000); // Update every 2 seconds
+
+        // Storage Pie Chart
+        const storageCtx = document.getElementById('storageChart').getContext('2d');
+        const storageChart = new Chart(storageCtx, {
+            type: 'pie',
+            data: {
+                labels: ['DB1', 'DB2', 'DB3', 'DB4'],
+                datasets: [{
+                    label: 'Storage Usage',
+                    data: [772, 4030, 2560, 3120],
+                    backgroundColor: ['#42a5f5', '#ffca28', '#ef5350', '#66bb6a'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true
+            }
+        });
+    </script>
+</body>
+</html>
